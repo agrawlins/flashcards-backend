@@ -1,0 +1,17 @@
+Use THIS to connect to MongoDB:
+
+mongodb+srv://MerrimanLyon:13qeadzc%21%23QEADZC@cluster0.xqosq.mongodb.net/flashcardsdb?retryWrites=true&w=majority
+
+password:
+13qeadzc!#QEADZC
+
+password(for html):
+13qeadzc%21%23QEADZC
+
+
+
+Common Error Messages:
+
+200 -- all good!
+400 -- you messed up
+500 -- server messed up
