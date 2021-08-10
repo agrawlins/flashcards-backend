@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const Joi = require('Joi');
-const {productSchema} = require('./product');
+const {flashcardSchema} = require('./flashcard');
 
 const userSchema = new mongoose.Schema({
     name: {type: String, required: true},
     isGoldMember: {type: Boolean, default: false},
-    shoppingCart: {type: [productSchema], default: []},
+    deckCollection: {type: [flashcardSchema], default: []},
 });
 
 const User = mongoose.model('User', userSchema);
