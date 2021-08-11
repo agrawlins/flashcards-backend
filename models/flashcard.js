@@ -17,6 +17,8 @@ function validateFlashcard(flashcard){
         name: Joi.string().min(2).max(50).required(),
         description: Joi.string().required(),
         category: Joi.string().min(5).max(50).required(),
+        answer: Joi.string().min(5).max(50).required(),
+        explanation: Joi.string().min(5).max(50).required(),
     });
     return schema.validate(flashcard);
 }

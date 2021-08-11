@@ -10,6 +10,8 @@ router.post('/', async (req, res) => {
             name: req.body.name,
             description: req.body.description,
             category: req.body.category,
+            answer: req.body.answer,
+            explanation: req.body.explanation,
         });
         await flashcard.save();
         return res.send(flashcard);
@@ -51,7 +53,7 @@ router.put('/:id', async (req, res) => {
                 description: req.body.description,
                 category: req.body.category,
                 answer: req.body.answer,
-                explanation: req.body.explanation
+                explanation: req.body.explanation,
             },
             {new: true}
         );
