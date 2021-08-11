@@ -14,10 +14,10 @@ const Flashcard = mongoose.model('Flashcard', flashcardSchema);
 
 function validateFlashcard(flashcard){
     const schema = Joi.object({
-        name: Joi.string().min(2).max(50).required(),
-        question: Joi.string().required(),
+        name: Joi.string().min(1).max(50).required(),
+        question: Joi.string().min(5).max(50).required(),
         category: Joi.string().min(5).max(50).required(),
-        answer: Joi.string().min(5).max(50).required(),
+        answer: Joi.string().min(1).max(150).required(),
         explanation: Joi.string().min(5).max(50).required(),
     });
     return schema.validate(flashcard);
