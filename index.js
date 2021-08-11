@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 const deck = require('./routes/deck');
 const users = require('./routes/users');
+const cors = require('cors');
 
 connectDB();
 
+app.use(cors());
 app.use(express.json());
 app.use('/api/deck', deck);
 
