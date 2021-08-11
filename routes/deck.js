@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
         if(error) return res.status(400).send(error);
         const flashcard = new Flashcard({
             name: req.body.name,
-            description: req.body.description,
+            question: req.body.question,
             category: req.body.category,
             answer: req.body.answer,
             explanation: req.body.explanation,
@@ -50,7 +50,7 @@ router.put('/:id', async (req, res) => {
             req.params.id,
             {
                 name: req.body.name,
-                description: req.body.description,
+                question: req.body.question,
                 category: req.body.category,
                 answer: req.body.answer,
                 explanation: req.body.explanation,

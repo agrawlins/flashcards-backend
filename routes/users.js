@@ -29,7 +29,7 @@ router.put('/:userId/deckCollection/:flashcardId', async (req, res) =>{
         if(!flashcard) return res.status(400).send(`The flashcard with id "${req.params.flashcardId}" does not exist in ${req.params.userId}'s deck collection.`);
 
         flashcard.name = req.body.name;
-        flashcard.description = req.body.description;
+        flashcard.question = req.body.question;
         flashcard.category = req.body.category;
         flashcard.answer = req.body.answer;
         flashcard.explanation = req.body.explanation;
