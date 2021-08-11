@@ -50,6 +50,8 @@ router.put('/:id', async (req, res) => {
                 name: req.body.name,
                 description: req.body.description,
                 category: req.body.category,
+                answer: req.body.answer,
+                explanation: req.body.explanation
             },
             {new: true}
         );

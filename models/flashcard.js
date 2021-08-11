@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 
 const flashcardSchema = new mongoose.Schema({
-    name: {type: String, required: true, minlength: 2, maxlength: 255},
+    name: {type: String, required: true, minlength: 1, maxlength: 255},
     description: {type: String, required: true},
     category: {type: String, required: true, minlength: 5, maxlength: 50},
+    answer: {type: String, required: true, minlength: 2, maxlength: 255},
+    explanation: {type: String, required: true, minlength: 10, maxlength: 255},
     dateModified: {type: Date, default: Date.now},
 });
 

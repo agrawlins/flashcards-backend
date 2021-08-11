@@ -31,6 +31,8 @@ router.put('/:userId/deckCollection/:flashcardId', async (req, res) =>{
         flashcard.name = req.body.name;
         flashcard.description = req.body.description;
         flashcard.category = req.body.category;
+        flashcard.answer = req.body.answer;
+        flashcard.explanation = req.body.explanation;
         flashcard.dateModified = Date.now();
 
         await user.save();
