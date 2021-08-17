@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 
-//Deck
+//Deck stuff
 router.post('/', async (req, res) => {
     try{
         const{error} = validateD(req.body);
