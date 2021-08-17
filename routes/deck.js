@@ -81,8 +81,10 @@ router.delete('/:id', async (req, res) => {
 
 
 //Flashcards
-router.post('/', async (req, res) => {
+router.post('/:id/cards', async (req, res) => {
     try{
+        const deck = await Deck.findById(req.params.id);
+        if(!deck) return res.status(400).send(`${req.params.id} doesn't exist.`);
         const{error} = validateFC(req.body);
         if(error) return res.status(400).send(error);
         const flashcard = new Flashcard({
@@ -92,6 +94,8 @@ router.post('/', async (req, res) => {
             answer: req.body.answer,
             explanation: req.body.explanation,
         });
+        deck.cards.push(flashcard);
+        await deck.save();
         await flashcard.save();
         return res.send(flashcard);
     }catch(ex){
@@ -99,17 +103,20 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
+router.get('/:id/cards', async (req, res) => {
     try{
-        const deck = await Flashcard.find();
+        const deck = await Deck.findById(req.params.id);
+        if(!deck) return res.status(400).send(`${req.params.id} doesn't exist.`);
         return res.send(deck);
     }catch (ex) {
         return res.status(500).sendStatus(`Internal Server Error: ${ex}`);
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id/cards/:cardsId', async (req, res) => {
     try{
+        const deck = await Deck.findById(req.params.id);
+        if(!deck) return res.status(400).send(`${req.params.id} doesn't exist.`);
         const flashcard = await Flashcard.findById(req.params.id);
         if(!flashcard){
         return res.status(400).send(`The flashcard with id "${req.params.id}" does not exist.`);
@@ -120,8 +127,10 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id/cards/:cardsId', async (req, res) => {
     try{
+        const deck = await Deck.findById(req.params.id);
+        if(!deck) return res.status(400).send(`${req.params.id} doesn't exist.`);
         const {error} = validateFC(req.body);
         if (error) return res.status(400).send(error);
         
@@ -147,8 +156,10 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id/cards/:cardsId', async (req, res) => {
     try{
+        const deck = await Deck.findById(req.params.id);
+        if(!deck) return res.status(400).send(`${req.params.id} doesn't exist.`);
         const flashcard = await Flashcard.findByIdAndRemove(req.params.id);
         if(!flashcard)
         return res.status(400).send(`The flashcard with id "${req.params.id}" does not exist.`);
